@@ -2,7 +2,7 @@ lua << EOF
 require('lualine').setup {
   options = {
     icons_enabled = true,
-    theme = 'gruvbox',
+    theme = 'wombat',
     section_separators = {'', ''},
     component_separators = {'', ''},
     disabled_filetypes = {}
@@ -13,10 +13,8 @@ require('lualine').setup {
     lualine_c = {'filename'},
     lualine_x = {
       { 'diagnostics', sources = {"nvim_lsp"}, symbols = {error = ' ', warn = ' ', info = ' ', hint = ' '} },
-      'encoding',
-      'filetype'
     },
-    lualine_y = {'progress'},
+    lualine_y = {},
     lualine_z = {'location'}
   },
   inactive_sections = {
@@ -30,5 +28,4 @@ require('lualine').setup {
   tabline = {},
   extensions = {'fugitive'}
 }
-
 EOF

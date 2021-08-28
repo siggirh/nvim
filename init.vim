@@ -1,5 +1,5 @@
 set exrc
-set relativenumber
+" set relativenumber
 set nu
 set nohlsearch
 set hidden
@@ -22,14 +22,12 @@ set signcolumn=number
 set colorcolumn=100
 set cmdheight=2
 set updatetime=50
+set lazyredraw
 
 runtime ./plug.vim
 
 " Global
-" let ayucolor="dark"
-colorscheme gruvbox
-highlight Normal guibg=none
-
+colorscheme xcodedarkhc
 let mapleader = " "
 
 nnoremap <leader>q :wincmd q<CR>
@@ -39,3 +37,4 @@ nnoremap <leader>k :wincmd k<CR>
 nnoremap <leader>l :wincmd l<CR>
 nnoremap <leader>w :wincmd v<CR>:wincmd l<CR>
 nnoremap <leader>W :wincmd s<CR>:wincmd j<CR>
+

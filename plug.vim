@@ -1,13 +1,11 @@
 call plug#begin('~/.vim/plugged')
 
 " Theme
-Plug 'gruvbox-community/gruvbox'
+Plug 'shaunsingh/nord.nvim'
+Plug 'arzg/vim-colors-xcode'
 
-"Git
+" Git
 Plug 'tpope/vim-fugitive'
-
-" Bracket matcher
-Plug 'cohama/lexima.vim'
 
 " Telescope and necessary plugins for it
 Plug 'nvim-lua/plenary.nvim'
@@ -18,10 +16,12 @@ Plug 'nvim-telescope/telescope-fzy-native.nvim'
 " LSP
 Plug 'neovim/nvim-lspconfig'
 Plug 'kabouzeid/nvim-lspinstall'
-Plug 'glepnir/lspsaga.nvim'
+Plug 'ray-x/lsp_signature.nvim'
+Plug 'hrsh7th/nvim-compe' " Completion
+" Plug 'glepnir/lspsaga.nvim'
+" Temporary, since finder preview is broken in glepnir/lspsaga
+Plug 'jasonrhansen/lspsaga.nvim', {'branch': 'finder-preview-fixes'}
 
-" Completion
-Plug 'hrsh7th/nvim-compe'
 
 " Treesitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -31,7 +31,7 @@ Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'kyazdani42/nvim-tree.lua'
 
-"Status line
+" Status line
 Plug 'hoob3rt/lualine.nvim'
 
 " Formattings

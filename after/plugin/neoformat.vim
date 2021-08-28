@@ -1,6 +1,6 @@
 let g:neoformat_enabled_python = ['black']
-
+ 
 augroup fmt
   autocmd!
-  autocmd BufWritePre * undojoin | Neoformat
+  autocmd BufWritePre * | Neoformat
 augroup END
