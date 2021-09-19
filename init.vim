@@ -3,7 +3,8 @@ set nu
 set nohlsearch
 set hidden
 set noerrorbells
-set tabstop=2 softtabstop=2
+set tabstop=2
+set softtabstop=2
 set shiftwidth=2
 set expandtab
 set smartindent
