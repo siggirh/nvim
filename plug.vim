@@ -1,8 +1,7 @@
 call plug#begin('~/.vim/plugged')
 
 " Theme
-Plug 'shaunsingh/nord.nvim'
-Plug 'arzg/vim-colors-xcode'
+Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 
 " Git
 Plug 'tpope/vim-fugitive'
@@ -17,11 +16,11 @@ Plug 'nvim-telescope/telescope-fzy-native.nvim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'kabouzeid/nvim-lspinstall'
 Plug 'ray-x/lsp_signature.nvim'
-Plug 'hrsh7th/nvim-compe' " Completion
+Plug 'hrsh7th/nvim-compe'
+
 " Plug 'glepnir/lspsaga.nvim'
 " Temporary, since finder preview is broken in glepnir/lspsaga
 Plug 'jasonrhansen/lspsaga.nvim', {'branch': 'finder-preview-fixes'}
-
 
 " Treesitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}

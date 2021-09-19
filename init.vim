@@ -1,5 +1,4 @@
 set exrc
-" set relativenumber
 set nu
 set nohlsearch
 set hidden
@@ -27,7 +26,9 @@ set lazyredraw
 runtime ./plug.vim
 
 " Global
-colorscheme xcodedarkhc
+let g:tokyonight_style = "night"
+colorscheme tokyonight
+
 let mapleader = " "
 
 nnoremap <leader>q :wincmd q<CR>
