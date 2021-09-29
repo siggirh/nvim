@@ -14,7 +14,6 @@ require('lualine').setup {
     lualine_x = {
       { 'diagnostics', sources = {"nvim_lsp"}, symbols = {error = ' ', warn = ' ', info = ' ', hint = ' '} },
     },
-    --lualine_x = {},
     lualine_y = {},
     lualine_z = {'location'}
   },
