@@ -23,14 +23,15 @@ set colorcolumn=100
 set cmdheight=2
 set updatetime=50
 set lazyredraw
+set background=dark
+set mouse=a
 
 runtime ./plug.vim
 
 " Global
-let g:tokyonight_style = "night"
-colorscheme tokyonight
-
 let mapleader = " "
+
+colorscheme melange
 
 nnoremap <leader>q :wincmd q<CR>
 nnoremap <leader>h :wincmd h<CR>

@@ -24,4 +24,6 @@ require('nvim-treesitter.configs').setup {
     "javascript",
   }
 }
+
+require('tree-sitter-just').setup {}
 EOF
