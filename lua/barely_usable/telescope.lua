@@ -1,15 +1,11 @@
-nnoremap <leader>fq <cmd>Telescope current_buffer_fuzzy_find<CR>
-nnoremap <leader>ff <cmd>Telescope live_grep<CR>
-nnoremap <leader>fp <cmd>Telescope find_files<CR>
-
-lua << EOF
-local actions = require('telescope.actions')
 local telescope = require('telescope')
+local actions = require('telescope.actions')
 
-telescope.setup {
+telescope.setup({
   defaults = {
+    layout_strategy = 'vertical',
     file_sorter = require('telescope.sorters').get_fzf_sorter,
-    prompt_prefix = ' > ',
+    prompt_prefix = '  ',
     color_devicons = true,
 
     file_previewer = require('telescope.previewers').vim_buffer_cat.new,
@@ -25,14 +21,12 @@ telescope.setup {
     }
   },
   extensions = {
-    fzy_native = {
-      override_generic_sorter = false,
-      override_file_sorter = true
-    },
+    fuzzy = true,
+    override_generic_sorter = true,
+    override_file_sorter = true,
+    case_mode = "smart_case"
   }
-}
+})
 
-telescope.load_extension('fzy_native')
-
-EOF
+telescope.load_extension('fzf')
 
