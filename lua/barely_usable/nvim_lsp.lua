@@ -58,9 +58,4 @@ nvim_lsp.tsserver.setup({
 
 nvim_lsp.pyright.setup({
   on_attach = on_attach,
-  settings = {
-    python = {
-      pythonPath = "venv/bin/python"
-    }
-  }
 })

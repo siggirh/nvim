@@ -19,7 +19,6 @@ vim.cmd[[set scrolloff=8]]
 vim.cmd[[set noshowmode]]
 vim.cmd[[set completeopt=menuone,noinsert,noselect]]
 vim.cmd[[set signcolumn=number]]
-vim.cmd[[set colorcolumn=100]]
 vim.cmd[[set cmdheight=2]]
 vim.cmd[[set updatetime=50]]
 vim.cmd[[set lazyredraw]]
@@ -31,3 +30,5 @@ vim.g.mapleader = ' '
 vim.cmd[[let g:prettier#exec_cmd_async = 1]]
 vim.cmd[[let g:prettier#autoformat = 1]]
 vim.cmd[[let g:prettier#autoformat_require_pragma = 0]]
+
+vim.cmd[[autocmd BufWritePre *.py execute ':Black']]
