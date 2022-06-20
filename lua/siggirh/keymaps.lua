@@ -15,6 +15,8 @@ nmap('<leader>ff', '<cmd>Telescope live_grep<cr>')
 nmap('<leader>fb', '<cmd>Telescope buffers<cr>')
 nmap('<leader>fh', '<cmd>Telescope help_tags<cr>')
 
+imap('jk', '<Esc>')
+nmap('<leader>s', '<cmd>wincmd w<cr>')
 nmap('<leader>q', '<cmd>wincmd q<cr>')
 nmap('<leader>h', '<cmd>wincmd h<cr>')
 nmap('<leader>j', '<cmd>wincmd j<cr>')

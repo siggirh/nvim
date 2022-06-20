@@ -4,6 +4,9 @@ local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protoco
 local lspconfig = require('lspconfig')
 
 cmp.setup({
+  completion = {
+    autocomplete = false,
+  },
   formatting = {
     format = lspkind.cmp_format(),
   },
@@ -44,8 +47,7 @@ cmp.setup({
   },
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
-  }, {
-    { name = 'buffer' },
+    { name = 'buffer', keyword_length = 5 },
   })
 })
 

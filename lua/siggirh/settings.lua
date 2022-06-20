@@ -1,5 +1,6 @@
 vim.cmd[[set exrc]]
 vim.cmd[[set nu]]
+vim.cmd[[set relativenumber]]
 vim.cmd[[set nohlsearch]]
 vim.cmd[[set hidden]]
 vim.cmd[[set noerrorbells]]
@@ -32,3 +33,5 @@ vim.cmd[[let g:prettier#autoformat = 1]]
 vim.cmd[[let g:prettier#autoformat_require_pragma = 0]]
 
 vim.cmd[[autocmd BufWritePre *.py execute ':Black']]
+vim.cmd[[colorscheme onedark]]
+

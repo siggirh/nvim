@@ -14,7 +14,7 @@ local on_attach = function(client, bufnr)
   vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     vim.lsp.diagnostic.on_publish_diagnostics, {
       virtual_text = true,
-      signs = false,
+      signs = true,
       update_in_insert = false,
     }
   )
@@ -48,12 +48,23 @@ local on_attach = function(client, bufnr)
   }
 end
 
-lsp_signature.setup()
+lsp_signature.setup({
+  bind = true,
+  handler_opts = {
+    border = "rounded"
+  }
+})
+
 nvim_lsp.eslint.setup({})
 
 nvim_lsp.tsserver.setup({
   on_attach = on_attach,
-  filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "typescript.tsx" }
+  filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "typescript.tsx" },
+  init_options = {
+    preferences = {
+      disableAutomaticTypeAcquisition = false
+    }
+  }
 })
 
 nvim_lsp.pyright.setup({

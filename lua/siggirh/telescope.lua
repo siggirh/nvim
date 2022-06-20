@@ -7,6 +7,7 @@ telescope.setup({
     file_sorter = require('telescope.sorters').get_fzf_sorter,
     prompt_prefix = '  ',
     color_devicons = true,
+    file_ignore_patterns = {'.git/', 'package-lock.json', 'node_modules', 'build', 'dist'},
 
     file_previewer = require('telescope.previewers').vim_buffer_cat.new,
     grep_previewer = require('telescope.previewers').vim_buffer_vimgrep.new,
@@ -18,6 +19,11 @@ telescope.setup({
         ["C-q"] = actions.send_to_qflist,
         ["q"] = actions.close
       }
+    }
+  },
+  pickers = {
+    find_files = {
+      hidden = true,
     }
   },
   extensions = {
