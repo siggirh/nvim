@@ -1,15 +1,8 @@
-local lspkind = require('lspkind')
 local cmp = require('cmp')
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 local lspconfig = require('lspconfig')
 
 cmp.setup({
-  completion = {
-    autocomplete = false,
-  },
-  formatting = {
-    format = lspkind.cmp_format(),
-  },
   experimental = {
     ghost_text = true,
     native_menu = false,
@@ -32,7 +25,7 @@ cmp.setup({
       if cmp.visible() then
         cmp.select_next_item()
       else
-        fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
+        fallback()
       end
     end, { "i", "s" }),
     ['<CR>'] = cmp.mapping.confirm({
@@ -47,7 +40,7 @@ cmp.setup({
   },
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
-    { name = 'buffer', keyword_length = 5 },
+    { name = 'buffer', keyword_length = 2 },
   })
 })
 

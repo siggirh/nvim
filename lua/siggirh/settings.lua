@@ -23,15 +23,15 @@ vim.cmd[[set signcolumn=number]]
 vim.cmd[[set cmdheight=2]]
 vim.cmd[[set updatetime=50]]
 vim.cmd[[set lazyredraw]]
-vim.cmd[[set background=dark]]
-vim.cmd[[set mouse=a]]
 
+vim.opt.updatetime = 50
+vim.opt.mouse = 'a'
 vim.g.mapleader = ' '
 
 vim.cmd[[let g:prettier#exec_cmd_async = 1]]
 vim.cmd[[let g:prettier#autoformat = 1]]
 vim.cmd[[let g:prettier#autoformat_require_pragma = 0]]
-
 vim.cmd[[autocmd BufWritePre *.py execute ':Black']]
-vim.cmd[[colorscheme onedark]]
+
+vim.cmd[[colorscheme rose-pine]]
 

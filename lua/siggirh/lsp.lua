@@ -1,6 +1,5 @@
 local nvim_lsp = require('lspconfig')
 local protocol = require('vim.lsp.protocol')
-local lsp_signature = require('lsp_signature')
 
 local on_attach = function(client, bufnr)
   local opts = { noremap = true, silent = true }
@@ -47,13 +46,6 @@ local on_attach = function(client, bufnr)
     '', -- TypeParameter
   }
 end
-
-lsp_signature.setup({
-  bind = true,
-  handler_opts = {
-    border = "rounded"
-  }
-})
 
 nvim_lsp.eslint.setup({})
 

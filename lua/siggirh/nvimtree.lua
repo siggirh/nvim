@@ -2,22 +2,23 @@ local nvim_tree = require('nvim-tree')
 
 nvim_tree.setup({
   renderer = {
-    highlight_opened_files = "all",
+    highlight_opened_files = "none",
     indent_markers = {
       enable = true,
     },
     icons = {
       show = {
         git = false,
-        folder = true,
-        file = true,
-        folder_arrow = true
+        folder = false,
+        file = false,
+        folder_arrow = false,
       }
     },
   },
   view = {
-    width = 40,
-    hide_root_folder = true,
+    width = 30,
+    hide_root_folder = false,
+    side = "left",
   },
   git = {
     enable = false
@@ -27,7 +28,17 @@ nvim_tree.setup({
   },
   filters = {
     dotfiles = false,
-    custom = { "node_modules", ".DS_Store", ".idea", ".vscode", ".mypy_cache", ".git", "__pycache__", ".pytest_cache"}
+    custom = {
+      "node_modules",
+      "venv",
+      ".DS_Store",
+      ".idea",
+      ".vscode",
+      ".mypy_cache",
+      "__pycache__",
+      ".pytest_cache",
+      ".git$"
+    },
   },
   update_focused_file = {
     enable = true

@@ -3,11 +3,11 @@ local actions = require('telescope.actions')
 
 telescope.setup({
   defaults = {
-    layout_strategy = 'vertical',
+    layout_strategy = 'horizontal',
     file_sorter = require('telescope.sorters').get_fzf_sorter,
     prompt_prefix = '  ',
     color_devicons = true,
-    file_ignore_patterns = {'.git/', 'package-lock.json', 'node_modules', 'build', 'dist'},
+    file_ignore_patterns = {'.git/', 'package-lock.json', 'venv/', 'node_modules/', 'build/', 'dist/'},
 
     file_previewer = require('telescope.previewers').vim_buffer_cat.new,
     grep_previewer = require('telescope.previewers').vim_buffer_vimgrep.new,
