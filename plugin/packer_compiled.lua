@@ -41,6 +41,9 @@ local function save_profiles(threshold)
       results[i] = elem[1] .. ' took ' .. elem[2] .. 'ms'
     end
   end
+  if threshold then
+    table.insert(results, '(Only showing plugins that took longer than ' .. threshold .. ' ms ' .. 'to load)')
+  end
 
   _G._packer.profile_output = results
 end
@@ -71,11 +74,6 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
-  ["auto-dark-mode.nvim"] = {
-    loaded = true,
-    path = "/Users/sr/.local/share/nvim/site/pack/packer/start/auto-dark-mode.nvim",
-    url = "https://github.com/f-person/auto-dark-mode.nvim"
-  },
   black = {
     loaded = true,
     path = "/Users/sr/.local/share/nvim/site/pack/packer/start/black",
@@ -100,11 +98,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/sr/.local/share/nvim/site/pack/packer/start/cmp-vsnip",
     url = "https://github.com/hrsh7th/cmp-vsnip"
-  },
-  ["lspkind-nvim"] = {
-    loaded = true,
-    path = "/Users/sr/.local/share/nvim/site/pack/packer/start/lspkind-nvim",
-    url = "https://github.com/onsails/lspkind-nvim"
   },
   ["lspsaga.nvim"] = {
     loaded = true,
@@ -155,11 +148,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/sr/.local/share/nvim/site/pack/packer/start/nvim-ts-autotag",
     url = "https://github.com/windwp/nvim-ts-autotag"
-  },
-  ["nvim-web-devicons"] = {
-    loaded = true,
-    path = "/Users/sr/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
-    url = "https://github.com/kyazdani42/nvim-web-devicons"
   },
   ["packer.nvim"] = {
     loaded = true,

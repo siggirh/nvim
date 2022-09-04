@@ -8,11 +8,8 @@ require('packer').startup(function()
   use({ 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' })
 
   use('nvim-lualine/lualine.nvim')
-  use('kyazdani42/nvim-web-devicons')
 
   use('kyazdani42/nvim-tree.lua')
-
-  use('onsails/lspkind-nvim')
 
   use('neovim/nvim-lspconfig')
   use('williamboman/nvim-lsp-installer')
@@ -22,7 +19,7 @@ require('packer').startup(function()
   use('windwp/nvim-ts-autotag')
 
   use('rose-pine/neovim')
-  use('f-person/auto-dark-mode.nvim')
+  --use('f-person/auto-dark-mode.nvim')
 
   use('hrsh7th/cmp-nvim-lsp')
   use('hrsh7th/cmp-buffer')
