@@ -1,6 +1,6 @@
-local configs = require('nvim-treesitter.configs')
+local treesitter = require('nvim-treesitter.configs')
 
-configs.setup({
+treesitter.setup({
   highlight = {
     enable = true,
     use_languagetree = true,

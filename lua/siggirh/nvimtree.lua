@@ -8,15 +8,15 @@ nvim_tree.setup({
     },
     icons = {
       show = {
-        git = false,
-        folder = false,
-        file = false,
-        folder_arrow = false,
+        git = true,
+        folder = true,
+        file = true,
+        folder_arrow = true,
       }
     },
   },
   view = {
-    width = 30,
+    width = 45,
     hide_root_folder = false,
     side = "left",
   },
@@ -44,4 +44,3 @@ nvim_tree.setup({
     enable = true
   }
 })
-

@@ -1,8 +1,12 @@
 local cmp = require('cmp')
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local lspkind = require('lspkind')
 local lspconfig = require('lspconfig')
+local capabilities = require('cmp_nvim_lsp')
 
 cmp.setup({
+  completion = {
+    autocomplete = false,
+  },
   experimental = {
     ghost_text = true,
     native_menu = false,
@@ -40,14 +44,21 @@ cmp.setup({
   },
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
-    { name = 'buffer', keyword_length = 2 },
-  })
+    { name = 'buffer' }
+  }),
+  formatting = {
+    format = lspkind.cmp_format({
+      mode = 'symbol_text',
+    })
+  }
 })
 
-lspconfig['tsserver'].setup({
+capabilities.update_capabilities(vim.lsp.protocol.make_client_capabilities())
+
+lspconfig.tsserver.setup({
   capabilities = capabilities
 })
 
-lspconfig['pyright'].setup({
+lspconfig.pyright.setup({
   capabilities = capabilities
 })
