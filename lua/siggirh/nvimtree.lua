@@ -2,29 +2,26 @@ local nvim_tree = require('nvim-tree')
 
 nvim_tree.setup({
   renderer = {
-    highlight_opened_files = "none",
     indent_markers = {
       enable = true,
     },
     icons = {
       show = {
-        git = false,
-        folder = false,
-        file = false,
+        git = true,
+        folder = true,
+        file = true,
         folder_arrow = true,
       }
-    },
+    }
   },
   view = {
-    width = 45,
-    hide_root_folder = false,
-    side = "left",
+    adaptive_size = true,
   },
   git = {
-    enable = false
+    enable = false,
   },
   diagnostics = {
-    enable = false
+    enable = false,
   },
   filters = {
     dotfiles = false,
@@ -41,6 +38,6 @@ nvim_tree.setup({
     },
   },
   update_focused_file = {
-    enable = true
+    enable = true,
   }
 })

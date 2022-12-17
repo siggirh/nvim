@@ -2,9 +2,7 @@ local cmp = require('cmp')
 if (not cmp) then return end
 
 local lspconfig = require('lspconfig')
-local capabilities = require('cmp_nvim_lsp')
-
-capabilities.update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 lspconfig.tsserver.setup({
   capabilities = capabilities
@@ -16,11 +14,7 @@ lspconfig.pyright.setup({
 
 cmp.setup({
   completion = {
-    autocomplete = false,
-  },
-  experimental = {
-    ghost_text = true,
-    native_menu = false,
+    autocomplete = true,
   },
   snippet = {
     expand = function(args)
@@ -53,8 +47,16 @@ cmp.setup({
       end
     end, { "i", "s" }),
   },
-  sources = cmp.config.sources({
+  sources = {
+    { name = 'nvim_lsp_signature_help' },
     { name = 'nvim_lsp' },
-    { name = 'buffer' }
-  })
+    { name = 'luasnip' },
+    { name = 'nvim_lua' },
+    { name = 'path' },
+    { name = 'buffer' },
+  }
+  --sources = cmp.config.sources({
+  --  { name = 'nvim_lsp' },
+  --  { name = 'buffer' }
+  --}),
 })

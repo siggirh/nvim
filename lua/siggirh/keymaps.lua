@@ -35,3 +35,8 @@ nmap('<leader>dn', '<cmd>Lspsaga diagnostic_jump_next<cr>')
 nmap('<leader>dp', '<cmd>Lspsaga diagnostic_jump_prev<cr>')
 nmap('gs', '<cmd>Lspsaga signature_help<cr>')
 nmap('gh', '<cmd>Lspsaga lsp_finder<cr>')
+
+nmap('<leader>fb', ':Telescope file_browser<cr>')
+
+nmap('<C-j>', ':tabprevious<cr>')
+nmap('<C-k>', ':tabnext<cr>')
