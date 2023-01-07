@@ -18,14 +18,14 @@ vim.cmd [[set incsearch]]
 vim.cmd [[set termguicolors]]
 vim.cmd [[set scrolloff=8]]
 vim.cmd [[set noshowmode]]
-vim.cmd [[set completeopt=menuone,noinsert,noselect]]
+vim.cmd [[set completeopt=menu,menuone,noselect]]
 vim.cmd [[set signcolumn=number]]
 vim.cmd [[set cmdheight=2]]
 vim.cmd [[set updatetime=50]]
 vim.cmd [[set lazyredraw]]
 vim.cmd [[set cursorline]]
 
-vim.cmd [[colorscheme tokyonight-moon]]
+vim.cmd [[colorscheme rose-pine]]
 
 vim.opt.updatetime = 50
 vim.opt.mouse = 'a'

@@ -1,7 +1,5 @@
-local cmp = require('cmp')
-if (not cmp) then return end
-
 local lspconfig = require('lspconfig')
+local cmp = require('cmp')
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 lspconfig.tsserver.setup({
@@ -14,7 +12,13 @@ lspconfig.pyright.setup({
 
 cmp.setup({
   completion = {
-    autocomplete = true,
+    keyword_length = 3,
+  },
+  matching = {
+    disallow_fuzzy_matching = true,
+    disallow_prefix_unmatching = true,
+    disallow_partial_matching = true,
+
   },
   snippet = {
     expand = function(args)

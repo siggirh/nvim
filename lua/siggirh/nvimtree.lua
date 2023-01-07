@@ -7,8 +7,8 @@ nvim_tree.setup({
     },
     icons = {
       show = {
-        git = true,
-        folder = true,
+        git = false,
+        folder = false,
         file = true,
         folder_arrow = true,
       }

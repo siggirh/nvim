@@ -46,5 +46,5 @@ require('packer').startup(function()
   })
 
   use('tpope/vim-fugitive')
-  use('folke/tokyonight.nvim')
+  use('rose-pine/neovim')
 end)

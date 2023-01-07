@@ -124,6 +124,11 @@ _G.packer_plugins = {
     path = "/Users/sr/.local/share/nvim/site/pack/packer/start/lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
   },
+  neovim = {
+    loaded = true,
+    path = "/Users/sr/.local/share/nvim/site/pack/packer/start/neovim",
+    url = "https://github.com/rose-pine/neovim"
+  },
   ["nvim-cmp"] = {
     loaded = true,
     path = "/Users/sr/.local/share/nvim/site/pack/packer/start/nvim-cmp",
@@ -173,11 +178,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/sr/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
-  },
-  ["tokyonight.nvim"] = {
-    loaded = true,
-    path = "/Users/sr/.local/share/nvim/site/pack/packer/start/tokyonight.nvim",
-    url = "https://github.com/folke/tokyonight.nvim"
   },
   ["vim-fugitive"] = {
     loaded = true,
