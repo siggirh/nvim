@@ -79,6 +79,11 @@ _G.packer_plugins = {
     path = "/Users/sr/.local/share/nvim/site/pack/packer/start/black",
     url = "https://github.com/psf/black"
   },
+  catppuccin = {
+    loaded = true,
+    path = "/Users/sr/.local/share/nvim/site/pack/packer/start/catppuccin",
+    url = "https://github.com/catppuccin/nvim"
+  },
   ["cmp-buffer"] = {
     loaded = true,
     path = "/Users/sr/.local/share/nvim/site/pack/packer/start/cmp-buffer",
@@ -123,11 +128,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/sr/.local/share/nvim/site/pack/packer/start/lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
-  },
-  neovim = {
-    loaded = true,
-    path = "/Users/sr/.local/share/nvim/site/pack/packer/start/neovim",
-    url = "https://github.com/rose-pine/neovim"
   },
   ["nvim-cmp"] = {
     loaded = true,

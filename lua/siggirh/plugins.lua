@@ -46,5 +46,5 @@ require('packer').startup(function()
   })
 
   use('tpope/vim-fugitive')
-  use('rose-pine/neovim')
+  use({ "catppuccin/nvim", as = "catppuccin" })
 end)
