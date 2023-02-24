@@ -26,20 +26,20 @@ local on_attach = function(client, bufnr)
 end
 
 
-nvim_lsp.sumneko_lua.setup({
-  on_attach = on_attach,
-  settings = {
-    Lua = {
-      diagnostics = {
-        globals = { 'vim', 'use' }
-      },
-      workspace = {
-        library = vim.api.nvim_get_runtime_file("", true),
-        checkThirdParty = false,
-      }
-    }
-  }
-})
+--nvim_lsp.sumneko_lua.setup({
+--  on_attach = on_attach,
+--  settings = {
+--    Lua = {
+--      diagnostics = {
+--        globals = { 'vim', 'use' }
+--      },
+--      workspace = {
+--        library = vim.api.nvim_get_runtime_file("", true),
+--        checkThirdParty = false,
+--      }
+--    }
+--  }
+--})
 
 nvim_lsp.eslint.setup({})
 
