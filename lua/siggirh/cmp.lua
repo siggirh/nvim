@@ -1,14 +1,4 @@
-local lspconfig = require('lspconfig')
 local cmp = require('cmp')
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
-
-lspconfig.tsserver.setup({
-  capabilities = capabilities
-})
-
-lspconfig.pyright.setup({
-  capabilities = capabilities
-})
 
 cmp.setup({
   completion = {
@@ -18,7 +8,6 @@ cmp.setup({
     disallow_fuzzy_matching = true,
     disallow_prefix_unmatching = true,
     disallow_partial_matching = true,
-
   },
   snippet = {
     expand = function(args)
@@ -52,15 +41,7 @@ cmp.setup({
     end, { "i", "s" }),
   },
   sources = {
-    { name = 'nvim_lsp_signature_help' },
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
-    { name = 'nvim_lua' },
-    { name = 'path' },
-    { name = 'buffer' },
   }
-  --sources = cmp.config.sources({
-  --  { name = 'nvim_lsp' },
-  --  { name = 'buffer' }
-  --}),
 })

@@ -9,7 +9,7 @@ treesitter.setup({
     additional_vim_regex_highlighting = false
   },
   indent = {
-    enable = false,
+    enable = true,
   },
   ensure_installed = {
     "css",
@@ -28,5 +28,7 @@ treesitter.setup({
     "typescript",
     "vim",
     "yaml",
+    "markdown",
+    "markdown_inline",
   }
 })

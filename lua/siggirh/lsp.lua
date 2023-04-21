@@ -1,6 +1,9 @@
 local nvim_lsp = require('lspconfig')
+local mason = require('mason')
+local mason_lspconfig = require('mason-lspconfig')
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single" })
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' })
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics,
@@ -25,30 +28,61 @@ local on_attach = function(client, bufnr)
   end
 end
 
+mason.setup()
 
---nvim_lsp.sumneko_lua.setup({
---  on_attach = on_attach,
---  settings = {
---    Lua = {
---      diagnostics = {
---        globals = { 'vim', 'use' }
---      },
---      workspace = {
---        library = vim.api.nvim_get_runtime_file("", true),
---        checkThirdParty = false,
---      }
---    }
---  }
---})
+mason_lspconfig.setup({
+  ensure_installed = {
+    'pyright',
+    'tsserver',
+    'eslint',
+    'lua_ls',
+  },
+})
 
-nvim_lsp.eslint.setup({})
+nvim_lsp.eslint.setup({
+  capabilities = capabilities,
+  on_attach = on_attach,
+})
+
+nvim_lsp.lua_ls.setup({
+  capabilities = capabilities,
+  on_attach = on_attach,
+  settings = {
+    Lua = {
+      diagnostics = {
+        globals = { "vim" },
+      },
+      telemetry = {
+        enable = false
+      },
+      workspace = {
+        checkThirdParty = false,
+        library = {
+          [vim.fn.expand "$VIMRUNTIME/lua"] = true,
+          [vim.fn.stdpath "config" .. "/lua"] = true,
+        },
+      },
+    },
+  },
+})
 
 nvim_lsp.tsserver.setup({
+  capabilities = capabilities,
   on_attach = on_attach,
-  filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "typescript.tsx" },
-  cmd = { "typescript-language-server", "--stdio" }
+  filetypes = {
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "typescript.tsx"
+  },
+  cmd = {
+    "typescript-language-server",
+    "--stdio"
+  }
 })
 
 nvim_lsp.pyright.setup({
+  capabilities = capabilities,
   on_attach = on_attach,
 })
