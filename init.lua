@@ -88,6 +88,7 @@ lazy.setup({
 
   {
     'nvim-treesitter/nvim-treesitter',
+    tag = "v0.9.0",
     dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
     },
@@ -101,9 +102,7 @@ lazy.setup({
   }
 })
 
---
 -- Settings
---
 vim.cmd [[set exrc]]
 vim.cmd [[set nu]]
 vim.cmd [[set relativenumber]]
@@ -172,22 +171,19 @@ end
 
 local auto_dark_mode = load_module('auto-dark-mode')
 if auto_dark_mode then
-  local override_highlights = function()
-    vim.cmd [[ highlight! MatchParen guibg=NONE ]]
-    vim.cmd [[ highlight! NormalFloat guibg=NONE ]]
-  end
-
   auto_dark_mode.setup({
     update_interval = 1000,
     set_dark_mode = function()
-      vim.api.nvim_set_option('background', 'dark')
       vim.cmd [[ colorscheme catppuccin-macchiato ]]
-      override_highlights()
+      vim.cmd [[ highlight! MatchParen guibg=NONE ]]
+      vim.cmd [[ highlight! NormalFloat guibg=NONE ]]
+      vim.cmd [[ highlight! FloatBorder guibg=#1e2030 ]]
     end,
     set_light_mode = function()
-      vim.api.nvim_set_option('background', 'light')
       vim.cmd [[ colorscheme catppuccin-latte ]]
-      override_highlights()
+      vim.cmd [[ highlight! MatchParen guibg=NONE ]]
+      vim.cmd [[ highlight! NormalFloat guibg=NONE ]]
+      vim.cmd [[ highlight! FloatBorder guibg=#e6e9ef ]]
     end,
   })
 
@@ -198,7 +194,7 @@ local cmp = load_module("cmp")
 if cmp then
   cmp.setup({
     completion = {
-      keyword_length = 3,
+      --keyword_length = 3,
     },
     matching = {
       disallow_fuzzy_matching = true,
@@ -244,7 +240,6 @@ if cmp then
 end
 
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' })
-
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics,
   {
