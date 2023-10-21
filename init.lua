@@ -24,20 +24,23 @@ local lazy = load_module("lazy")
 if not lazy then return end
 
 lazy.setup({
-  'tjdevries/colorbuddy.nvim',
-
-  'f-person/auto-dark-mode.nvim',
-
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
   'tpope/vim-sleuth',
+
+  {
+    'hardhackerlabs/theme-vim',
+    name = "hardhacker",
+    config = function()
+      vim.cmd.colorscheme 'hardhacker'
+    end,
+  },
 
   {
     'neovim/nvim-lspconfig',
     dependencies = {
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
-      'folke/neodev.nvim',
     },
   },
 
@@ -46,18 +49,7 @@ lazy.setup({
     dependencies = {
       'hrsh7th/cmp-nvim-lsp',
       'L3MON4D3/LuaSnip',
-      'saadparwaiz1/cmp_luasnip'
     },
-  },
-
-  {
-    "catppuccin/nvim",
-    name = "catppuccin",
-  },
-
-  {
-    'folke/which-key.nvim',
-    opts = {},
   },
 
   'nvim-lualine/lualine.nvim',
@@ -70,12 +62,8 @@ lazy.setup({
   },
 
   {
-    'numToStr/Comment.nvim',
-    opts = {},
-  },
-
-  {
     'nvim-telescope/telescope.nvim',
+    tag = "0.1.2",
     dependencies = {
       'nvim-lua/plenary.nvim'
     }
@@ -88,7 +76,7 @@ lazy.setup({
 
   {
     'nvim-treesitter/nvim-treesitter',
-    tag = "v0.9.0",
+    tag = "v0.9.1",
     dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
     },
@@ -103,31 +91,31 @@ lazy.setup({
 })
 
 -- Settings
-vim.cmd [[set exrc]]
-vim.cmd [[set nu]]
-vim.cmd [[set relativenumber]]
-vim.cmd [[set nohlsearch]]
-vim.cmd [[set hidden]]
-vim.cmd [[set noerrorbells]]
-vim.cmd [[set tabstop=2]]
-vim.cmd [[set softtabstop=2]]
-vim.cmd [[set shiftwidth=2]]
-vim.cmd [[set expandtab]]
-vim.cmd [[set smartindent]]
-vim.cmd [[set nowrap]]
-vim.cmd [[set noswapfile]]
-vim.cmd [[set nobackup]]
-vim.cmd [[set undodir=~/.vim/undodir]]
-vim.cmd [[set undofile]]
-vim.cmd [[set incsearch]]
-vim.cmd [[set termguicolors]]
-vim.cmd [[set scrolloff=8]]
-vim.cmd [[set noshowmode]]
-vim.cmd [[set completeopt=menu,menuone,noselect]]
-vim.cmd [[set signcolumn=number]]
-vim.cmd [[set updatetime=50]]
-vim.cmd [[set lazyredraw]]
-vim.cmd [[set cursorline]]
+vim.cmd [[ set exrc ]]
+vim.cmd [[ set nu ]]
+vim.cmd [[ set relativenumber ]]
+vim.cmd [[ set nohlsearch ]]
+vim.cmd [[ set hidden ]]
+vim.cmd [[ set noerrorbells ]]
+vim.cmd [[ set tabstop=2 ]]
+vim.cmd [[ set softtabstop=2 ]]
+vim.cmd [[ set shiftwidth=2 ]]
+vim.cmd [[ set expandtab ]]
+vim.cmd [[ set smartindent ]]
+vim.cmd [[ set nowrap ]]
+vim.cmd [[ set noswapfile ]]
+vim.cmd [[ set nobackup ]]
+vim.cmd [[ set undodir=~/.vim/undodir ]]
+vim.cmd [[ set undofile ]]
+vim.cmd [[ set incsearch ]]
+vim.cmd [[ set termguicolors ]]
+vim.cmd [[ set scrolloff=8 ]]
+vim.cmd [[ set noshowmode ]]
+vim.cmd [[ set completeopt=menu,menuone,noselect ]]
+vim.cmd [[ set signcolumn=number ]]
+vim.cmd [[ set updatetime=50 ]]
+vim.cmd [[ set lazyredraw ]]
+vim.cmd [[ set cursorline ]]
 
 vim.o.updatetime = 50
 vim.o.mouse = 'a'
@@ -152,7 +140,7 @@ if lualine then
   lualine.setup({
     options = {
       icons_enabled = true,
-      theme = 'catppuccin',
+      --theme = 'catppuccin',
     },
     sections = {
       lualine_b = { 'filename' },
@@ -163,39 +151,13 @@ if lualine then
   })
 end
 
-local colorbuddy = load_module("colorbuddy")
-if colorbuddy then
-  colorbuddy.setup()
-end
-
-
-local auto_dark_mode = load_module('auto-dark-mode')
-if auto_dark_mode then
-  auto_dark_mode.setup({
-    update_interval = 1000,
-    set_dark_mode = function()
-      vim.cmd [[ colorscheme catppuccin-macchiato ]]
-      vim.cmd [[ highlight! MatchParen guibg=NONE ]]
-      vim.cmd [[ highlight! NormalFloat guibg=NONE ]]
-      vim.cmd [[ highlight! FloatBorder guibg=#1e2030 ]]
-    end,
-    set_light_mode = function()
-      vim.cmd [[ colorscheme catppuccin-latte ]]
-      vim.cmd [[ highlight! MatchParen guibg=NONE ]]
-      vim.cmd [[ highlight! NormalFloat guibg=NONE ]]
-      vim.cmd [[ highlight! FloatBorder guibg=#e6e9ef ]]
-    end,
-  })
-
-  auto_dark_mode.init()
-end
-
 local cmp = load_module("cmp")
 if cmp then
   cmp.setup({
-    completion = {
-      --keyword_length = 3,
-    },
+    --completion = {
+    --  --autocomplete = true,
+    --  --keyword_length = 3,
+    --},
     matching = {
       disallow_fuzzy_matching = true,
       disallow_prefix_unmatching = true,
@@ -234,7 +196,6 @@ if cmp then
     },
     sources = {
       { name = 'nvim_lsp' },
-      { name = 'luasnip' },
     }
   })
 end
@@ -263,7 +224,6 @@ if mason_lspconfig then
       'pyright',
       'tsserver',
       'eslint',
-      'lua_ls',
     },
   })
 end
@@ -289,28 +249,6 @@ if nvim_lsp then
   nvim_lsp.eslint.setup({
     capabilities = capabilities,
     on_attach = on_attach,
-  })
-
-  nvim_lsp.lua_ls.setup({
-    capabilities = capabilities,
-    on_attach = on_attach,
-    settings = {
-      Lua = {
-        diagnostics = {
-          globals = { "vim" },
-        },
-        telemetry = {
-          enable = false
-        },
-        workspace = {
-          checkThirdParty = false,
-          library = {
-            [vim.fn.expand "$VIMRUNTIME/lua"] = true,
-            [vim.fn.stdpath "config" .. "/lua"] = true,
-          },
-        },
-      },
-    },
   })
 
   nvim_lsp.tsserver.setup({
@@ -426,32 +364,33 @@ if treesitter then
   treesitter.setup({
     highlight = {
       enable = true,
-      use_languagetree = true,
-      additional_vim_regex_highlighting = false
+      --use_languagetree = true,
+      --additional_vim_regex_highlighting = false,
     },
     indent = {
       enable = true,
     },
-    ensure_installed = {
-      "css",
-      "dockerfile",
-      "go",
-      "html",
-      "javascript",
-      "json",
-      "json5",
-      "jsonc",
-      "lua",
-      "prisma",
-      "python",
-      "scss",
-      "tsx",
-      "typescript",
-      "vim",
-      "yaml",
-      "markdown",
-      "markdown_inline",
-    }
+    ensure_installed = "all"
+    --ensure_installed = {
+    --  "css",
+    --  "dockerfile",
+    --  "go",
+    --  "html",
+    --  "javascript",
+    --  "json",
+    --  "json5",
+    --  "jsonc",
+    --  "prisma",
+    --  "python",
+    --  "scss",
+    --  "tsx",
+    --  "typescript",
+    --  "vim",
+    --  "yaml",
+    --  "markdown",
+    --  "markdown_inline",
+    --  "tsx"
+    --}
   })
 end
 
