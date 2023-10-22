@@ -126,8 +126,8 @@ local config = function()
 			"docker",
 		},
 		init_options = {
-			documentFormatting = true,
-			documentRangeFormatting = true,
+			--documentFormatting = true,
+			--documentRangeFormatting = true,
 			hover = true,
 			documentSymbol = true,
 			codeAction = true,
