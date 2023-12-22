@@ -3,7 +3,7 @@ local diagnostic_signs = require("util.lsp").diagnostic_signs
 
 local config = function()
 	require("neoconf").setup({})
-	--local cmp_nvim_lsp = require("cmp_nvim_lsp")
+	local cmp_nvim_lsp = require("cmp_nvim_lsp")
 	local lspconfig = require("lspconfig")
 
 	for type, icon in pairs(diagnostic_signs) do
@@ -11,11 +11,11 @@ local config = function()
 		vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 	end
 
-	--local capabilities = cmp_nvim_lsp.default_capabilities()
+	local capabilities = cmp_nvim_lsp.default_capabilities()
 
 	-- lua
 	lspconfig.lua_ls.setup({
-		--capabilities = capabilities,
+		capabilities = capabilities,
 		on_attach = on_attach,
 		settings = { -- custom settings for lua
 			Lua = {
@@ -36,18 +36,18 @@ local config = function()
 
 	-- json
 	lspconfig.jsonls.setup({
-		--capabilities = capabilities,
+		capabilities = capabilities,
 		on_attach = on_attach,
 		filetypes = { "json", "jsonc" },
 	})
 
 	-- python
 	lspconfig.pyright.setup({
-		--capabilities = capabilities,
+		capabilities = capabilities,
 		on_attach = on_attach,
 		settings = {
 			pyright = {
-				disableOrganizeImports = false,
+				disableOrganizeImports = true,
 				analysis = {
 					useLibraryCodeForTypes = true,
 					autoSearchPaths = true,
@@ -61,7 +61,7 @@ local config = function()
 	-- typescript
 	lspconfig.tsserver.setup({
 		on_attach = on_attach,
-		-- capabilities = capabilities,
+		capabilities = capabilities,
 		filetypes = {
 			"typescript",
 			"javascript",
@@ -73,37 +73,23 @@ local config = function()
 
 	-- bash
 	lspconfig.bashls.setup({
-		-- capabilities = capabilities,
+		capabilities = capabilities,
 		on_attach = on_attach,
 		filetypes = { "sh" },
 	})
 
-	-- html, typescriptreact, javascriptreact, css, sass, scss, less, svelte, vue
-	-- lspconfig.emmet_ls.setup({
-	-- 	-- capabilities = capabilities,
-	-- on_attach = on_attach,
-	-- 	filetypes = {
-	-- 		"html",
-	-- 		"typescriptreact",
-	-- 		"javascriptreact",
-	-- 		"javascript",
-	-- 		"css",
-	-- 	},
-	-- })
-
 	-- docker
 	lspconfig.dockerls.setup({
-		-- capabilities = capabilities,
+		capabilities = capabilities,
 		on_attach = on_attach,
 	})
 
 	local luacheck = require("efmls-configs.linters.luacheck")
 	local stylua = require("efmls-configs.formatters.stylua")
-	local flake8 = require("efmls-configs.linters.flake8")
 	local black = require("efmls-configs.formatters.black")
 	local isort = require("efmls-configs.formatters.isort")
-	local eslint_d = require("efmls-configs.linters.eslint_d")
-	local prettierd = require("efmls-configs.formatters.prettier_d")
+	local eslint = require("efmls-configs.linters.eslint")
+	local prettier = require("efmls-configs.formatters.prettier")
 	local fixjson = require("efmls-configs.formatters.fixjson")
 	local shellcheck = require("efmls-configs.linters.shellcheck")
 	local shfmt = require("efmls-configs.formatters.shfmt")
@@ -126,8 +112,8 @@ local config = function()
 			"docker",
 		},
 		init_options = {
-			--documentFormatting = true,
-			--documentRangeFormatting = true,
+			documentFormatting = true,
+			documentRangeFormatting = true,
 			hover = true,
 			documentSymbol = true,
 			codeAction = true,
@@ -136,16 +122,16 @@ local config = function()
 		settings = {
 			languages = {
 				lua = { luacheck, stylua },
-				python = { isort, flake8, black },
-				typescript = { eslint_d, prettierd },
-				json = { eslint_d, fixjson },
-				jsonc = { eslint_d, fixjson },
+				python = { isort, black },
+				typescript = { eslint, prettier },
+				json = { eslint, fixjson },
+				jsonc = { eslint, fixjson },
 				sh = { shellcheck, shfmt },
-				javascript = { eslint_d, prettierd },
-				javascriptreact = { eslint_d, prettierd },
-				typescriptreact = { eslint_d, prettierd },
-				markdown = { alex, prettierd },
-				docker = { hadolint, prettierd },
+				javascript = { eslint, prettier },
+				javascriptreact = { eslint, prettier },
+				typescriptreact = { eslint, prettier },
+				markdown = { alex, prettier },
+				docker = { hadolint, prettier },
 			},
 		},
 	})
@@ -159,5 +145,8 @@ return {
 		"windwp/nvim-autopairs",
 		"williamboman/mason.nvim",
 		"creativenull/efmls-configs-nvim",
+		"hrsh7th/nvim-cmp",
+		"hrsh7th/cmp-buffer",
+		"hrsh7th/cmp-nvim-lsp",
 	},
 }
